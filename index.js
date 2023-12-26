@@ -62,7 +62,7 @@ console.log (e.message)
   // Set the bot API endpoint
   app.use(await bot.createWebhook({ domain: process.env.WEBHOOK_URL }));
 
-  app.listen(3000,()=>console.log("Server Started"));
+  app.listen(process.env.PORT || 3000,()=>console.log("Server Started"));
 
 }
 
