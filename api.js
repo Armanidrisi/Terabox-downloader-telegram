@@ -3,9 +3,9 @@ const axios = require("axios");
 async function getDetails(id) {
     try {
         const response = await axios.get(
-            `http://terabox-dl.qtcloud.workers.dev/api/get-info?shorturl=19lNca22VikYmeNPFWeK6-A&pwd=`
+            `http://terabox-dl.qtcloud.workers.dev/api/get-info?shorturl=${id}&pwd=`
         );
-      console.log(response.data);
+      
         return response.data;
     } catch (error) {
         console.error(error);
