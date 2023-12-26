@@ -1,6 +1,9 @@
+async function main () {
+
 const { Telegraf, Markup } = require("telegraf");
 const { getDetails } = require("./api");
 const { parseList, sendFile } = require("./utils");
+const express = require('express');
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
@@ -26,7 +29,7 @@ bot.on("message", async ctx => {
         const linkID = parts[parts.length - 1];
 
         // ctx.reply(linkID)
-
+ try{
         const details = await getDetails(linkID);
         if (details.ok) {
             ctx.reply(`Sending ${details.list.length} Files Please Wait.!!`);
@@ -46,10 +49,21 @@ bot.on("message", async ctx => {
         } else {
             ctx.reply(details.message);
         }
+   console.log(`${details}`);
+}catch(e){
+console.log (e.message)
+ }
     } else {
         ctx.reply("Please send a valid Terabox link.");
     }
-  
 });
 
-bot.launch();
+  const app = express();
+  // Set the bot API endpoint
+  app.use(await bot.createWebhook({ domain: process.env.WEBHOOK_URL }));
+
+  app.listen(3000,()=>console.log("Server Started"));
+
+}
+
+main();
