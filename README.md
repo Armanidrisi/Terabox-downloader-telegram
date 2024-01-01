@@ -9,6 +9,9 @@ This bot allows you to download files from Terabox and more through Telegram.
 
  `WEBHOOK_URL` : Webhook URL of bot (your server url)...
 
+Video Tutorial [How To Deploy](https://youtu.be/KECEaNLRP2Q?si=4Ml3y_ikoxwT0qDG)
+
+
 You Can Create More Bot Like This By Following This [Example](https://github.com/feathers-studio/telegraf-docs/blob/master/examples%2Fwebhook%2Fexpress.ts)
 
 ## Socials 
