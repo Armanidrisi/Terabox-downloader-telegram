@@ -11,9 +11,6 @@ This bot allows you to download files from Terabox and more through Telegram.
 
 Video Tutorial [How To Deploy](https://youtu.be/KECEaNLRP2Q?si=4Ml3y_ikoxwT0qDG)
 
-## Important Update ⚠️ 
-- Bot is not giving file due to API issues, please wait for issue resolve..(Don't deploy)
-
 
 ## Socials 
 Join Our Telegram [Channel](https://telegram.dog/botcodes123)
