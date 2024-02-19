@@ -12,13 +12,13 @@ const parseList = list => {
 };
 
 const sendFile = async (item, ctx) => {
-    const data = await getDownloadLink(item);
+    
 
-    if (data.ok) {
+    if (item) {
       try{
-        await ctx.replyWithDocument(data.downloadLink)
+        await ctx.replyWithDocument(item)
       }catch(e){
-ctx.replyWithMarkdown(`${e.message}\n\nTry manually downloading from [here](${data.downloadLink})`);
+ctx.replyWithMarkdown(`⚠️ ${e.message}\n\n👉 Try manually downloading from [here](${item})\n\n👉 *Maybe This File Is Too Large Or Cannot Accessible From Terabox*`);
       }
         
     }
