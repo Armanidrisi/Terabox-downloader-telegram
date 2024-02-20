@@ -1,7 +1,7 @@
 async function main() {
   const { Telegraf, Markup } = require("telegraf");
   const { getDetails } = require("./api");
-  const { parseList, sendFile } = require("./utils");
+  const { sendFile } = require("./utils");
   const express = require("express");
 
   const bot = new Telegraf(process.env.BOT_TOKEN);
@@ -28,11 +28,11 @@ async function main() {
       // ctx.reply(linkID)
 
       const details = await getDetails(messageText);
-      if (details.link) {
+      if (details.direct_link) {
         ctx.reply(`Sending Files Please Wait.!!`);
-    sendFile (details.direct_link, ctx)
+        sendFile(details.direct_link, ctx);
       } else {
-        ctx.reply(details.detail);
+        ctx.reply(details.toString());
       }
       console.log(`${details}`);
     } else {
