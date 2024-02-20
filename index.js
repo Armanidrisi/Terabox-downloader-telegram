@@ -21,27 +21,34 @@ async function main() {
   });
 
   bot.on("message", async (ctx) => {
-    const messageText = ctx.message.text;
-    if (
-      messageText.includes("terabox.com") ||
-      messageText.includes("teraboxapp.com")
-    ) {
-      //const parts = messageText.split("/");
-      //const linkID = parts[parts.length - 1];
+    if (ctx.message && ctx.message.text) {
+      const messageText = ctx.message.text;
+      if (
+        messageText.includes("terabox.com") ||
+        messageText.includes("teraboxapp.com")
+      ) {
+        //const parts = messageText.split("/");
+        //const linkID = parts[parts.length - 1];
 
-      // ctx.reply(linkID)
-      try {
+        // ctx.reply(linkID)
+
         const details = await getDetails(messageText);
-        if (details.direct_link) {
-          ctx.reply(`Sending Files Please Wait.!!`);
-          sendFile(details.direct_link, ctx);
+        if (details && details.direct_link) {
+          try {
+            ctx.reply(`Sending Files Please Wait.!!`);
+            sendFile(details.direct_link, ctx);
+          } catch (e) {
+            console.error(e); // Log the error for debugging
+          }
         } else {
-          ctx.reply(details.toString());
+          ctx.reply('Something went wrong 🙃');
         }
-        console.log(`${details}`);
-      } catch (e) {}
+        console.log(details);
+      } else {
+        ctx.reply("Please send a valid Terabox link.");
+      }
     } else {
-      ctx.reply("Please send a valid Terabox link.");
+      //ctx.reply("No message text found.");
     }
   });
 
