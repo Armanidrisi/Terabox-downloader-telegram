@@ -7,13 +7,17 @@ async function main() {
   const bot = new Telegraf(process.env.BOT_TOKEN);
 
   bot.start(async (ctx) => {
-    ctx.reply(
-      `Hi ${ctx.message.from.first_name},\n\nI can Download Files from Terabox.\n\nMade with ❤️ by @botcodes123\n\nSend any terabox link to download.`,
-      Markup.inlineKeyboard([
-        Markup.button.url(" Channel", "https://t.me/botcodes123"),
-        Markup.button.url("Report bug", "https://t.me/Armanidrisi_bot"),
-      ]),
-    );
+    try {
+      ctx.reply(
+        `Hi ${ctx.message.from.first_name},\n\nI can Download Files from Terabox.\n\nMade with ❤️ by @botcodes123\n\nSend any terabox link to download.`,
+        Markup.inlineKeyboard([
+          Markup.button.url(" Channel", "https://t.me/botcodes123"),
+          Markup.button.url("Report bug", "https://t.me/Armanidrisi_bot"),
+        ]),
+      );
+    } catch (e) {
+      console.error(e);
+    }
   });
 
   bot.on("message", async (ctx) => {
@@ -26,15 +30,16 @@ async function main() {
       //const linkID = parts[parts.length - 1];
 
       // ctx.reply(linkID)
-
-      const details = await getDetails(messageText);
-      if (details.direct_link) {
-        ctx.reply(`Sending Files Please Wait.!!`);
-        sendFile(details.direct_link, ctx);
-      } else {
-        ctx.reply(details.toString());
-      }
-      console.log(`${details}`);
+      try {
+        const details = await getDetails(messageText);
+        if (details.direct_link) {
+          ctx.reply(`Sending Files Please Wait.!!`);
+          sendFile(details.direct_link, ctx);
+        } else {
+          ctx.reply(details.toString());
+        }
+        console.log(`${details}`);
+      } catch (e) {}
     } else {
       ctx.reply("Please send a valid Terabox link.");
     }
