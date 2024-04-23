@@ -16,6 +16,6 @@ Video Tutorial
 
 
 ## Socials 
-Join Our Telegram [Channel](https://telegram.dog/botcodes123)
+Join Our Telegram [Channel](https://telegram.dog/jujutsukaisenaimbot)
 
 If You Want Any Help Related To This Bot [Contact us On Telegram](https://telegram.dog/Armanidrisi_bot)
