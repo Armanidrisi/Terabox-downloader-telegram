@@ -4,6 +4,11 @@ This bot allows you to download files from Terabox and more through Telegram.
 
 [Bot link](https://t.me/terabox_downloader_robot)
 
+
+# Important Update ⚠️
+ - currently bot is not working so please don't deploy
+
+
 ## Required environment variables
  `BOT_TOKEN` : Telegram Bot Token
 
